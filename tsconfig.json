@@ -1,0 +1,14 @@
+{
+    "compileOnSave": true,
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "watch": true,
+        "outDir": "dist",
+        "sourceMap": true,
+        "rootDir": "src"
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
