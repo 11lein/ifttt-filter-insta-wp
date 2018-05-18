@@ -5,6 +5,7 @@ class InstagramMock {
         this.newPhotoByYouTagged = {
             Caption: "",
             CaptionNoTag: "",
+            Url: "",
         };
     }
 }

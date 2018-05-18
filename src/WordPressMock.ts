@@ -1,6 +1,7 @@
-export class WordPressMock {
+export class WordpressMock {
     createPhotoPostWp = {
-        setCaption: (s: string): void => { console.log('Caption: ' +  s)},
-        setTitle: (s: string): void => { console.log('Title: ' +  s)},
-    }
+        setCaption: (s: string): void => { console.log("Caption: " +  s);},
+        setTitle: (s: string): void => { console.log("Title: " +  s);},
+
+    };
 }

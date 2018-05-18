@@ -1,25 +1,46 @@
-import {InstagramMock} from "./InstaMock";
-import {WordPressMock} from "./WordPressMock";
+import { InstagramMock } from "./InstaMock";
+import { WordpressMock } from "./WordpressMock";
 
-let Instagram:InstagramMock = new InstagramMock;
-let WordPress:WordPressMock = new WordPressMock;
+// init Mocks
+let Instagram: InstagramMock = new InstagramMock;
+let Wordpress: WordpressMock = new WordpressMock;
 
-Instagram.newPhotoByYouTagged.Caption = `
-Test #foodblog Test
-test 12345
-Test 2 3`;
-Instagram.newPhotoByYouTagged.CaptionNoTag = "Test Test";
+Instagram.newPhotoByYouTagged.Caption = `Kartoffel Blumenkohl Feta Hack Auflauf
 
-let arr1:string[] = Instagram.newPhotoByYouTagged.Caption.split(" ");
-let arr2:string[] = Instagram.newPhotoByYouTagged.CaptionNoTag.split(" ");
+das 2. Bild erinnert mich an #littleshopofhorrors mit #rickmoranis und bevor der #Blumenkohl von mir #FeedMeee verlangt ,
+ hab ich ihn gefuttert. #foodblog #cauliflower #potato #mincedmeat #feta #cream #sahne`;
+Instagram.newPhotoByYouTagged.CaptionNoTag = `Kartoffel Blumenkohl Feta Hack Auflauf
 
-let hashTag:string = arr1.filter(x => arr2.indexOf(x) < 0)[0];
+das 2. Bild erinnert mich an #littleshopofhorrors mit #rickmoranis und bevor der #Blumenkohl von mir #FeedMeee verlangt ,
+ hab ich ihn gefuttert. #cauliflower #potato #mincedmeat #feta #cream #sahne`;
 
-let myTitle:string = Instagram.newPhotoByYouTagged.Caption.split(hashTag)[0];
+class Filter {
+    public static main(): number {
+        /** Snip start filter code */
+        let caption: string = Instagram.newPhotoByYouTagged.Caption;
 
-let myCaption:string = Instagram.newPhotoByYouTagged.Caption.split(hashTag)[1];
+        let arr1: string[] = caption.split(" ");
+        let arr2: string[] = Instagram.newPhotoByYouTagged.CaptionNoTag.split(" ");
+
+        let hashTag: string = arr1.filter(x => arr2.indexOf(x) < 0)[0];
+
+        let myTitle: string = caption.substring(0, caption.indexOf("\n"));
 
 
-WordPress.createPhotoPostWp.setTitle(myTitle);
+        let myCaption: string = caption.substring(caption.indexOf("\n"))
+        .split(hashTag)[0]
+        .replace(/#/g,"")
+        .trim();
 
-WordPress.createPhotoPostWp.setCaption(`HashTag : ${hashTag} <br> ${myCaption}`);
+        Wordpress.createPhotoPostWp.setTitle(myTitle);
+
+        Wordpress.createPhotoPostWp.setCaption(`${myCaption} <br>
+        via Instagram <a href="${Instagram.newPhotoByYouTagged.Url}" alt="Intagram Link">${Instagram.newPhotoByYouTagged.Url}</a>`);
+
+        /** Snip end */
+
+        return 0;
+    }
+}
+
+Filter.main();
