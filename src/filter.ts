@@ -18,7 +18,7 @@ export class Filter {
         let arr1: string[] = caption.split(" ");
         let arr2: string[] = Instagram.newPhotoByYouTagged.CaptionNoTag.split(" ");
 
-        // get the hashtag by diff the CaptionNoTag
+        // get the hashtag by diff the CaptionNoTag to caption
         let hashTag: string = arr1.filter(x => arr2.indexOf(x) < 0)[0];
 
         // get the title  (caption from start to first linebreak)
@@ -30,7 +30,7 @@ export class Filter {
         .split(hashTag)[0] 
         .replace(/#/g,""); //remove '#'s 
 
-        // get the tags, words after the hashtag
+        // get the tags, words after the hashtag as comma seperated list
         let tags: string = caption.split(hashTag)[1]
         .trim()
         .replace(/#/g,"")
