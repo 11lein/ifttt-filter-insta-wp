@@ -10,4 +10,4 @@ class InstagramMock {
     }
 }
 exports.InstagramMock = InstagramMock;
-//# sourceMappingURL=InstaMock.js.map
+//# sourceMappingURL=instaMock.js.map

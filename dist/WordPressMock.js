@@ -5,8 +5,9 @@ class WordpressMock {
         this.createPhotoPostWp = {
             setCaption: (s) => { console.log("Caption: " + s); },
             setTitle: (s) => { console.log("Title: " + s); },
+            setTags: (s) => { console.log("Tags: " + s); },
         };
     }
 }
 exports.WordpressMock = WordpressMock;
-//# sourceMappingURL=WordPressMock.js.map
+//# sourceMappingURL=wordpressMock.js.map

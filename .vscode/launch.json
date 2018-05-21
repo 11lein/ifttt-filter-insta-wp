@@ -1,11 +1,13 @@
 {
     "version": "0.2.0",
-    "configurations": [{
+    "configurations": [
+        
+        {
             "type": "node",
             "request": "launch",
             "name": "Debug Program",
             
-            "program": "${workspaceRoot}\\src\\filter.ts",
+            "program": "${workspaceRoot}\\src\\app.ts",
             "cwd": "${workspaceRoot}",
             "env": {
                 "NODE_ENV": "development"
