@@ -28,10 +28,10 @@ class Filter {
         let tags = caption.split(hashTag)[1]
             .trim()
             .replace(/#/g, "")
-            .replace(/\s/g, ", ");
+            .split(/\s+/g).join(", ");
         Wordpress.createPhotoPostWp.setTitle(title);
-        Wordpress.createPhotoPostWp.setCaption(`${body} <br />>
-        via Instagram <br />><a href="${Instagram.newPhotoByYouTagged.Url}" 
+        Wordpress.createPhotoPostWp.setCaption(`${body} <br />
+        via Instagram <br /><a href="${Instagram.newPhotoByYouTagged.Url}" 
         alt="Intagram Link">${Instagram.newPhotoByYouTagged.Url}</a>`);
         Wordpress.createPhotoPostWp.setTags(tags);
         /** Snip end */
