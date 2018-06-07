@@ -22,13 +22,13 @@ export class Filter {
         let hashTag: string = arr1.filter(x => arr2.indexOf(x) < 0)[0];
 
         // get the title  (caption from start to first linebreak)
-        let title: string = caption.substring(0, caption.indexOf("\n"));
+        let title: string = caption.substring(0, caption.indexOf("\n")).replace(/#/g,"");
 
         // get the text body after first line break to the hashtag
         let body: string = caption.substring(caption.indexOf("\n"))
-        .trim() 
-        .split(hashTag)[0] 
-        .replace(/#/g,""); //remove '#'s 
+        .trim()
+        .split(hashTag)[0]
+        .replace(/#/g,""); // remove '#'s
 
         // get the tags, words after the hashtag as comma seperated list
         let tags: string = caption.split(hashTag)[1]
@@ -39,7 +39,7 @@ export class Filter {
         Wordpress.createPhotoPostWp.setTitle(title);
 
         Wordpress.createPhotoPostWp.setCaption(`${body} <br />
-        via Instagram <br /><a href="${Instagram.newPhotoByYouTagged.Url}" 
+        via Instagram <br /><a href="${Instagram.newPhotoByYouTagged.Url}"
         alt="Intagram Link">${Instagram.newPhotoByYouTagged.Url}</a>`);
 
         Wordpress.createPhotoPostWp.setTags(tags);
